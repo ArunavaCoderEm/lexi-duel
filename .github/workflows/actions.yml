@@ -25,5 +25,6 @@ jobs:
       - name: Run Custom Script (e.g., update process)
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
         run: |
           npm run check
