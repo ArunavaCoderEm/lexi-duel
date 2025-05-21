@@ -22,3 +22,7 @@ export interface stateUser extends userCreate {
   isInDB: boolean,
   setUser: (user: Partial<Omit<stateUser, 'setUser'>>) => void;
 }
+
+export interface classnameprop {
+  classname ?: string
+}
