@@ -29,6 +29,7 @@ model Level {
 
   level        Int     @default(1)
   prevScore    Int     @default(0)
+  currScore    Int     @default(0)
   prevOpponent String?
   highScore    Int     @default(0)
   levelComp    Int     @default(0)

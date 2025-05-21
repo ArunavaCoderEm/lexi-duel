@@ -1,6 +1,9 @@
 NextJS, Tailwind, Typescript, Zustand, Prisma, Postgres Supabase, ShadCN, Clerk, Websocket, Apis, Vitest, Github workflows, Domain, Azure 
 
 
+dark horizon
+zash - OMP
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
