@@ -31,6 +31,7 @@ export default async function userExists({ email }: UserWithEmail) {
       throw new Error("User parsing error occurred");
     }
   } catch (e: unknown) {
+    console.log(e);
     throw new Error("User error occurred");
   }
 }

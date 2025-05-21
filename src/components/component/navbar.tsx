@@ -18,7 +18,7 @@ export default function Navbar(): React.ReactNode {
     };
 
     checkUser();
-  }, []);
+  }, [user.isInDB]);
 
   return <div>Navbar</div>;
 }
