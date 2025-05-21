@@ -16,3 +16,9 @@ export interface userCreate {
   email: string, 
   avatar ?: string
 }
+
+export interface stateUser extends userCreate {
+  isLoggedIn: boolean,
+  isInDB: boolean,
+  setUser: (user: Partial<Omit<stateUser, 'setUser'>>) => void;
+}

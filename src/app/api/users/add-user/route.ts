@@ -1,3 +1,5 @@
+"use server"
+
 import prismaQuery from "@/config/prisma.config";
 import { userSchema } from "@/schema/user.schema";
 import { userCreate } from "@/types/type";
