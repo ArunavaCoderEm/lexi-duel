@@ -4,6 +4,7 @@ import { childProps } from "@/types/type";
 import CustomContext from "@/context/custom-context";
 import Navbar from "@/components/component/navbar";
 import Footer from "@/components/component/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "LexiDuel",
@@ -20,11 +21,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<childProps>) {
   return (
     <html className="dark" lang="en">
-      <body className={`p-5 px-5 min-h-screen selection:bg-[#FCFCF7] selection:text-[#0E0D12] text-clig bg-cdark font-satoshi antialiased`}>
+      <body
+        className={`p-5 px-5 min-h-screen selection:bg-[#FCFCF7] selection:text-[#0E0D12] text-clig bg-cdark font-satoshi antialiased`}
+      >
         <CustomContext>
           <Navbar />
           {children}
           <Footer />
+          <Toaster />
         </CustomContext>
       </body>
     </html>

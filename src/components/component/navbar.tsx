@@ -26,11 +26,10 @@ export default function Navbar(): React.ReactNode {
   });
 
   const user = useUserStore();
-  console.log(cUser)
+
   useLayoutEffect(() => {
     const checkUser = async () => {
       if (cUser && !user.isInDB) {
-
         await userExists({
           email: cUser?.emailAddresses[0].emailAddress || "",
           firstName: cUser?.firstName || "",

@@ -32,7 +32,6 @@ export default async function userExists({
         isLoggedIn: true,
         isInDB: true,
       });
-      return;
     } else {
       const userdata = user.data.user;
       useUserStore.getState().setUser({
@@ -43,7 +42,6 @@ export default async function userExists({
         isLoggedIn: true,
         isInDB: true,
       });
-      return;
     }
   } catch (e: unknown) {
     throw new Error("User error occurred");
