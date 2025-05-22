@@ -1,13 +1,13 @@
-import { GameState } from '@/types/type';
-import { create } from 'zustand';
-
+import { GameState } from "@/types/type";
+import { create } from "zustand";
 
 export const useGameStore = create<GameState>((set) => ({
   currentWord: "",
-  status: 'waiting',
+  status: "waiting",
+  setGame: (game) => set((state) => ({ ...state, ...game })),
   resetGame: () =>
     set({
-      currentWord: '',
-      status: 'waiting',
+      currentWord: "",
+      status: "waiting",
     }),
 }));

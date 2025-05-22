@@ -6,7 +6,6 @@ import { useUserStore } from "@/store/userStore";
 import { navbarProps } from "@/types/type";
 import React, { useLayoutEffect, useState } from "react";
 import { Link } from "next-view-transitions";
-import Image from "next/image";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 export default function Navbar(): React.ReactNode {
@@ -18,7 +17,6 @@ export default function Navbar(): React.ReactNode {
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest: number) => {
-    console.log(latest)
     if (latest > 20) {
       setScroll(true);
     } else {

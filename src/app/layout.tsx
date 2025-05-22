@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<childProps>) {
   return (
     <html className="dark" lang="en">
-      <body className={`p-5 px-5 selection:bg-[#FCFCF7] selection:text-[#0E0D12] text-clig bg-cdark font-satoshi antialiased`}>
+      <body className={`p-5 px-5 min-h-screen selection:bg-[#FCFCF7] selection:text-[#0E0D12] text-clig bg-cdark font-satoshi antialiased`}>
         <CustomContext>
           <Navbar />
           {children}

@@ -2,12 +2,13 @@ export interface childProps {
     children: React.ReactNode;
 }
 
-export type GameStatus = 'waiting' | 'playing' | 'won' | 'lost';
+export type GameStatus = 'waiting' | 'playing' | 'won' | 'lost' | 'ready';
 
 export interface GameState {
   status: GameStatus;
   currentWord: string;
   resetGame: () => void
+  setGame: (game : Partial<Omit<GameState, 'setGame'>>) => void,
 }
 
 export interface userCreate { 

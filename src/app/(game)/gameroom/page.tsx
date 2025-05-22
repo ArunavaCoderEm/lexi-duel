@@ -1,33 +1,24 @@
 "use client";
 
-import useFetch from "@/hooks/use-fetch";
-import React, { useEffect, useState } from "react";
+import getword from "@/helper/givetheword";
+import { useGameStore } from "@/store/game-store";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 export default function GameRoom(): React.ReactNode {
-  const [word, setWord] = useState<string>("");
 
-  const fetchWords = async () => {
-    const res = await fetch(
-      "https://cheaderthecoder.github.io/5-Letter-words/words.json"
-    );
-    return res.json(); 
-  };
+  useLayoutEffect(() => {
+    getword();
+  }, []);
 
-  const { loading, error, data, fn: getCustomWord } = useFetch(fetchWords);
+  const currentWord = useGameStore((state) => state.currentWord);
+  const status = useGameStore((state) => state.status);
 
   useEffect(() => {
-    getCustomWord();
-  }, [getCustomWord]);
-
-  useEffect(() => {
-    if (data?.words && Array.isArray(data.words)) {
-      const wordInd: number = Math.floor(Math.random() * data.words.length);
-      setWord(data.words[wordInd]?.toUpperCase());
+    if (status === "ready") {
+      console.log("Current word updated:", currentWord);
     }
-  }, [data]);
+  }, [currentWord, status]);  
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
 
-  return <div>{word}</div>;
+  return <div className="mt-20">{status === "ready" && currentWord}</div>;
 }
