@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 
-const useFetch = <T,>(cb: (...args: any[]) => Promise<T>) => {
+const useFetch = <T,>(cb: (...args: unknown[]) => Promise<T>) => {
   const [data, setData] = useState<T | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fn = async (...args: any[]) => {
+  const fn = async (...args: unknown[]) => {
     setLoading(true);
     setError(null);
 

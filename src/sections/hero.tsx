@@ -29,7 +29,7 @@ export default function Hero({ classname }: classnameprop): React.ReactNode {
         classname="md:opacity-30 opacity-0  absolute random-anim bottom-12 left-64"
         letter="W"
       />
-      <LetterBlock classname="md:opacity-30 opacity-0 random-anim" letter="O" />
+      <LetterBlock classname="md:opacity-30 absolute top-10 right-[33%] opacity-0 random-anim" letter="O" />
       <LetterBlock
         classname="absolute md:opacity-30 opacity-0 random-anim top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         letter="R"
@@ -43,7 +43,7 @@ export default function Hero({ classname }: classnameprop): React.ReactNode {
         letter="L"
       />
       <LetterBlock
-        classname="absolute md:opacity-30 opacity-0 random-anim left-0 bottom-0 left-1/2"
+        classname="absolute md:opacity-30 opacity-0 random-anim bottom-0 right-[55%]"
         letter="E"
       />
 
@@ -54,7 +54,7 @@ export default function Hero({ classname }: classnameprop): React.ReactNode {
           duration: 0.5,
           ease: "easeInOut",
         }}
-        className="font-extrabold mt-10 bg-clip-text text-transparent bg-gradient-to-b from-neutral-500 via-neutral-300 to-[#FCFCF7] text-4xl md:text-6xl max-w-5xl md:leading-16 text-center"
+        className="font-extrabold z-10 mt-10 bg-clip-text text-transparent bg-gradient-to-b from-neutral-500 via-neutral-300 to-[#FCFCF7] text-4xl md:text-6xl max-w-5xl md:leading-16 text-center"
       >
         Guess
         <motion.span
@@ -112,12 +112,12 @@ export default function Hero({ classname }: classnameprop): React.ReactNode {
           up.
         </motion.span>{" "}
       </motion.h1>
-      <h3 className="mt-10 max-w-3xl text-center text-lg text-neutral-400 font-[400] tracking-tight">
+      <h3 className="mt-10 z-10 max-w-3xl text-center text-lg text-neutral-400 font-[400] tracking-tight">
         Play Wordle head-to-head. Real-time guessing, live scoreboard, and
-        endless fun. It's the battle of minds, one word at a time.
+        endless fun. It&apos;s the battle of minds, one word at a time.
       </h3>
 
-      <div className="flex gap-3 my-10 items-center justify-center">
+      <div className="flex z-10 gap-3 my-10 items-center justify-center">
         <Button className="text-black cursor-pointer">Get Started</Button>
         <Button className="cursor-pointer" variant={"outline"}>
           Learn More

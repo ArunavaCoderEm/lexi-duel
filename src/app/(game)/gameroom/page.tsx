@@ -17,7 +17,7 @@ export default function GameRoom(): React.ReactNode {
 
   useEffect(() => {
     getCustomWord();
-  }, []);
+  }, [getCustomWord]);
 
   useEffect(() => {
     if (data?.words && Array.isArray(data.words)) {

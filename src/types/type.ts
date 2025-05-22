@@ -36,7 +36,7 @@ export interface DotPatternBackgroundProps {
   className?: string
   style?: React.CSSProperties
   fade?: boolean
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export type LetterBlockProps = { letter: string; classname?: string };
