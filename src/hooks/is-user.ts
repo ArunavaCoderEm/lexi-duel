@@ -2,15 +2,39 @@ import { useUserStore } from "@/store/userStore";
 import { userCreate } from "@/types/type";
 import axios from "axios";
 
-type UserWithEmail = Omit<userCreate, "firstName" | "lastName" | "avatar">;
-
-export default async function userExists({ email }: UserWithEmail) {
+export default async function userExists({
+  email,
+  firstName,
+  lastName,
+  avatar,
+}: userCreate) {
   try {
-    const user = await axios.get(`/api/users/get-user/${email}`);
+    const user = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users/get-user/${email}`
+    );
 
-    if (user.data.success) {
+    if (!user.data.success) {
+      const newUser = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/add-user`,
+        {
+          email,
+          firstName,
+          lastName,
+          avatar,
+        }
+      );
+      const newUserd = newUser.data.user;
+      useUserStore.getState().setUser({
+        firstName: newUserd.firstName,
+        lastName: newUserd.lastName || "",
+        email: newUserd.email,
+        avatar: newUserd.avatar || "",
+        isLoggedIn: true,
+        isInDB: true,
+      });
+      return;
+    } else {
       const userdata = user.data.user;
-
       useUserStore.getState().setUser({
         firstName: userdata.firstName,
         lastName: userdata.lastName || "",
@@ -19,19 +43,9 @@ export default async function userExists({ email }: UserWithEmail) {
         isLoggedIn: true,
         isInDB: true,
       });
-    } else {
-      useUserStore.getState().setUser({
-        firstName: "",
-        lastName: "",
-        email,
-        avatar: "",
-        isLoggedIn: false,
-        isInDB: false,
-      });
-      throw new Error("User parsing error occurred");
+      return;
     }
   } catch (e: unknown) {
-    console.log(e);
     throw new Error("User error occurred");
   }
 }

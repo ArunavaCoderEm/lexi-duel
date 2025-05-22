@@ -41,7 +41,7 @@ export async function GET(req: Request, { params }: { params: UserWithEmail }) {
         message: "User not found",
         success: false,
         user: null,
-      });
+      }, {status: 200});
     }
   } catch (e: unknown) {
     return NextResponse.json({

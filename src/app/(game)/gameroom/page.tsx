@@ -13,12 +13,6 @@ export default function GameRoom(): React.ReactNode {
   const currentWord = useGameStore((state) => state.currentWord);
   const status = useGameStore((state) => state.status);
 
-  useEffect(() => {
-    if (status === "ready") {
-      console.log("Current word updated:", currentWord);
-    }
-  }, [currentWord, status]);  
 
-
-  return <div className="mt-20">{status === "ready" && currentWord}</div>;
+  return <div className="">{status === "ready" && currentWord}</div>;
 }

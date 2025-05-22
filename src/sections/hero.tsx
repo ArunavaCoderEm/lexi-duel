@@ -6,8 +6,13 @@ import { classnameprop } from "@/types/type";
 import React from "react";
 import { motion } from "framer-motion";
 import BackgroundDots from "@/components/component/bg-dots";
+import { useUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 export default function Hero({ classname }: classnameprop): React.ReactNode {
+
+  const { user } = useUser();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -118,7 +123,15 @@ export default function Hero({ classname }: classnameprop): React.ReactNode {
       </h3>
 
       <div className="flex z-10 gap-3 my-10 items-center justify-center">
-        <Button className="text-black cursor-pointer">Get Started</Button>
+        <Button 
+        onClick={() => {
+          if (user) {
+            redirect("/lobby")
+          } else {
+            redirect("/sign-in")
+          }
+        }}
+        className="text-black cursor-pointer">Get Started</Button>
         <Button className="cursor-pointer" variant={"outline"}>
           Learn More
         </Button>
