@@ -177,3 +177,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes randomMove {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  20% {
+    transform: translate(3px, -2px) rotate(1deg);
+  }
+  40% {
+    transform: translate(-2px, 3px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(2px, 2px) rotate(1deg);
+  }
+  80% {
+    transform: translate(-3px, -1px) rotate(-2deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+.random-anim {
+  animation: randomMove 3s infinite ease-in-out;
+}
