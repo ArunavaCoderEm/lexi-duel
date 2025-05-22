@@ -47,7 +47,7 @@ export default function Navbar(): React.ReactNode {
     <motion.nav
       animate={{ y: scroll ? 10 : 0, width: scroll ? "80%" : "100%" }}
       className={`flex items-center z-20 max-w-lg lg:max-w-6xl h-fit py-3 px-2 rounded-3xl mx-auto justify-between fixed inset-x-0 top-3 ${
-        scroll ? "bg-[#000]/90 backdrop-blur-sm" : "bg-transparent"
+        scroll ? "bg-[#151515]/90 backdrop-blur-sm" : "bg-transparent"
       } transition-colour duration-100`}
     >
       <Link
