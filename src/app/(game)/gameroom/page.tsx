@@ -2,7 +2,7 @@
 
 import getword from "@/helper/givetheword";
 import { useGameStore } from "@/store/game-store";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect } from "react";
 
 export default function GameRoom(): React.ReactNode {
 

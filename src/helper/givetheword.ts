@@ -12,7 +12,7 @@ export default async function getword() {
       currentWord: res.data.data[idx].toUpperCase(),
     });
   } catch (e: unknown) {
-    throw new Error("Error occured updating game state")
+    throw new Error(`Error occurred updating game state: ${e instanceof Error ? e.message : String(e)}`);
   } finally {
     useGameStore.getState().setGame({
       status: "ready",

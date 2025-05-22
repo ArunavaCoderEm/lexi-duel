@@ -44,6 +44,6 @@ export default async function userExists({
       });
     }
   } catch (e: unknown) {
-    throw new Error("User error occurred");
+    throw new Error(`Error occurred updating game state: ${e instanceof Error ? e.message : String(e)}`);
   }
 }

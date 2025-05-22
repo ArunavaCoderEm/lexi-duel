@@ -45,7 +45,7 @@ export default function Lobby() {
     if (!userdb) {
       redirect("/");
     }
-  }, []);
+  }, [userdb]);
 
   return (
     <Dialog>
