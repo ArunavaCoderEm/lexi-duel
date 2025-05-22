@@ -4,7 +4,7 @@ import React from "react";
 export default function MainApp(): React.ReactNode {
   return (
     <div className="mt-20  min-h-[100vh]">
-      <Home classname="" />
+      <Home classname="z-10 px-1" />
     </div>
   );
 }

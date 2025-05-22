@@ -52,3 +52,9 @@ export interface featuresProps {
   img: string;
   desc: string;
 }
+
+export type Testimonial = {
+  name: string;
+  quote: string;
+  image: string;
+};

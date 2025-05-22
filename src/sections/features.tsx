@@ -8,7 +8,7 @@ export default function Features({
   classname,
 }: classnameprop): React.ReactNode {
   return (
-    <div className={cn("", classname)}>
+    <div className={cn("p-1", classname)}>
       <h1 className="text-center text-3xl font-semibold bg-gradient-to-b bg-clip-text text-transparent from-neutral-500 via-neutral-400 to-[#FCFCF7] tracking-tight">
         What you get
       </h1>
@@ -19,7 +19,7 @@ export default function Features({
             ({ title, desc, img }: featuresProps, idx: number) => (
               <div
                 key={idx}
-                className="bg-[#1C1E1F] relative overflow-hidden p-5 pb-24  rounded-xl text-white"
+                className="bg-[#1C1E1F] shadow-xl relative overflow-hidden p-5 pb-24  rounded-xl text-white"
               >
                 <h1 className="text-lg font-semibold tracking-tight mb-1 z-10 relative">
                   {title}
@@ -44,7 +44,7 @@ export default function Features({
             ({ title, desc, img }: featuresProps, idx: number) => (
               <div
                 key={idx}
-                className="bg-[#1C1E1F] p-5 pb-24 overflow-hidden relative rounded-xl text-white"
+                className="bg-[#1C1E1F] shadow-xl p-5 pb-24 overflow-hidden relative rounded-xl text-white"
               >
                 <h1 className="text-lg font-semibold tracking-tight mb-1 z-10 relative">
                   {title}
