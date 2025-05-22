@@ -39,4 +39,9 @@ export interface DotPatternBackgroundProps {
   [key: string]: unknown
 }
 
+export type navbarProps = {
+  slug: string,
+  title: string,
+}
+
 export type LetterBlockProps = { letter: string; classname?: string };
