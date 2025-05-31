@@ -17,12 +17,14 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 export default function Lobby() {
   const userdb = useUserStore.getState().isInDB;
 
   const [roomName, setRoomName] = useState("");
   const [code, setCode] = useState<string>("");
+  const [joincode, setJoincode] = useState<string>("");
 
   const createGame = async () => {
     if (!roomName.trim()) {
@@ -41,6 +43,12 @@ export default function Lobby() {
     }
   };
 
+  const handleJoinGame = (): void => {
+    if (!joincode) {
+      toast.warning("Room Joining code is required.")
+    }
+  }
+
   useLayoutEffect(() => {
     if (!userdb) {
       redirect("/");
@@ -49,7 +57,12 @@ export default function Lobby() {
 
   return (
     <Dialog>
-      <div className="w-full bg-[#1B1B1B] min-h-96 p-6 gap-6 grid grid-cols-1 md:grid-cols-12 rounded-lg shadow-lg">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
+        className="w-full bg-[#1B1B1B] min-h-96 p-6 gap-6 grid grid-cols-1 md:grid-cols-12 rounded-lg shadow-lg"
+      >
         <div className="bg-[#101010] relative overflow-hidden gap-6 flex flex-col items-center justify-center rounded-md md:col-span-5 w-full p-6 transition-all duration-300">
           <div className="absolute h-24 w-24 -right-5 -top-5 bg-yellow-500/60 rounded-full blur-2xl" />
 
@@ -74,10 +87,12 @@ export default function Lobby() {
 
           <div className="flex flex-col gap-3 w-full">
             <Input
+              value={joincode}
+              onChange={(e) => setJoincode(e.target.value)}
               placeholder="Enter game code"
               className="w-full bg-[#1B1B1B] border border-gray-700 text-white"
             />
-            <Button variant="outline" className="w-full cursor-pointer">
+            <Button onClick={() => handleJoinGame()} variant="outline" className="w-full cursor-pointer">
               Join Game
             </Button>
           </div>
@@ -86,7 +101,7 @@ export default function Lobby() {
         <div className="md:col-span-7 rounded-md w-full flex items-center justify-center text-white text-xl font-light">
           Game previews, leaderboard, or match stats can go here!
         </div>
-      </div>
+      </motion.div>
 
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
