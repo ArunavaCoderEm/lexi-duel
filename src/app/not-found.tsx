@@ -1,5 +1,8 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
+import { redirect } from "next/navigation";
 import React from "react";
 
 export default function NotFound() {
@@ -13,7 +16,7 @@ export default function NotFound() {
         again!
       </p>
 
-      <Button className="mt-4 cursor-pointer  flex items-center gap-1">
+      <Button onClick={() => redirect("/")} className="mt-4 cursor-pointer  flex items-center gap-1">
         <Home size={16} />
         Home
       </Button>
