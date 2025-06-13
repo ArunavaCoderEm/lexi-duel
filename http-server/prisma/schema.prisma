@@ -1,0 +1,41 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  uid String @id @default(cuid())
+
+  firstName String
+  lastName  String?
+  email     String  @unique
+  avatar    String?
+
+  levelId String? @unique
+  level   Level?  @relation(fields: [levelId], references: [uid], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([firstName, email])
+  @@map("user")
+}
+
+model Level {
+  uid String @id @default(cuid())
+
+  level        Int     @default(1)
+  prevScore    Int     @default(0)
+  currScore    Int     @default(0)
+  prevOpponent String?
+  highScore    Int     @default(0)
+  levelComp    Int     @default(0)
+
+  user User? @relation
+
+  @@map("user_level")
+}

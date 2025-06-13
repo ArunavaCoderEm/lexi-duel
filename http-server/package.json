@@ -1,0 +1,13 @@
+{
+  "name": "http-server",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "hono": "^4.7.11"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
