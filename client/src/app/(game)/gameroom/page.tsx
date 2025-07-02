@@ -1,6 +1,6 @@
 "use client";
 
-import getword from "@/helper/givetheword";
+import getword from "@/helper/helper";
 import { useGameStore } from "@/store/game-store";
 import React, { useLayoutEffect } from "react";
 

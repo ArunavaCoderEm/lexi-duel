@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "../css/globals.css";
 import { childProps } from "@/types/type";
 import CustomContext from "@/context/custom-context";
-import Navbar from "@/components/component/navbar";
-import Footer from "@/components/component/footer";
+import Navbar from "@/components/base/navbar";
+import Footer from "@/components/base/footer";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {

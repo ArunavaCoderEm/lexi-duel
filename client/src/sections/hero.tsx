@@ -5,7 +5,7 @@ import { LetterBlock } from "@/icons/words";
 import { classnameprop } from "@/types/type";
 import React from "react";
 import { motion } from "framer-motion";
-import BackgroundDots from "@/components/component/bg-dots";
+import BackgroundDots from "@/components/base/bg-dots";
 import { useUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
