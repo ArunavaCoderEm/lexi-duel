@@ -1,8 +1,8 @@
-import { Hono } from 'hono'
+import { Context, Hono } from 'hono'
 
 const app = new Hono()
 
-app.get('/test', (c) => {
+app.get('/test', (c: Context) => {
   return c.text('Hello Hono!')
 })
 
