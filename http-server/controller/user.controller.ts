@@ -61,3 +61,58 @@ export async function userRegisterHandler(c: Context) {
     );
   }
 }
+
+export async function getUserHandler(c: Context) {
+  try {
+    
+    const data = c.req.param();
+
+    const parsed = userSchema.pick({ email: true }).safeParse(data);
+
+    if (!parsed.success) {
+      return c.json(
+        {
+          message: "User parsing error",
+          success: false,
+          error: parsed.error.flatten(),
+        },
+        400
+      );
+    }
+
+    const user = prismaQuery.user.findUnique({
+      where: {
+        email: parsed.data.email,
+      },
+    });
+
+    if (!user) {
+      return c.json(
+        {
+          message: "No User Found",
+          success: false,
+          error: { user: null },
+        },
+        404
+      );
+    }
+
+    return c.json(
+      {
+        message: "User found",
+        success: true,
+        user: user,
+      },
+      200
+    );
+  } catch (err: unknown) {
+    return c.json(
+      {
+        message: "Internal server error",
+        success: false,
+        error: (err as Error).message,
+      },
+      500
+    );
+  }
+}
