@@ -3,9 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useUserStore } from "@/store/userStore";
-import { redirect } from "next/navigation";
 import cuid from "cuid";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -18,9 +17,13 @@ import {
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
+import { UserButton } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function Lobby() {
-  const userdb = useUserStore.getState().isInDB;
+  const isInDB = useUserStore((state) => state.isInDB);
+
+  const router = useRouter();
 
   const [roomName, setRoomName] = useState("");
   const [code, setCode] = useState<string>("");
@@ -45,15 +48,15 @@ export default function Lobby() {
 
   const handleJoinGame = (): void => {
     if (!joincode) {
-      toast.warning("Room Joining code is required.")
+      toast.warning("Room Joining code is required.");
     }
-  }
+  };
 
-  useLayoutEffect(() => {
-    if (!userdb) {
-      redirect("/");
-    }
-  }, [userdb]);
+  // useEffect(() => {
+  //   if (!isInDB) {
+  //     router.push("/"); 
+  //   }
+  // }, [isInDB, router]);
 
   return (
     <Dialog>
@@ -61,8 +64,11 @@ export default function Lobby() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.4 }}
-        className="w-full bg-[#1B1B1B] min-h-96 p-6 gap-6 grid grid-cols-1 md:grid-cols-12 rounded-lg shadow-lg"
+        className="w-full bg-[#1B1B1B] min-h-96 p-6 gap-6 grid grid-cols-1 md:grid-cols-12 rounded-lg shadow-lg relative"
       >
+        <div className="absolute top-3 right-3">
+          <UserButton />
+        </div>
         <div className="bg-[#101010] relative overflow-hidden gap-6 flex flex-col items-center justify-center rounded-md md:col-span-5 w-full p-6 transition-all duration-300">
           <div className="absolute h-24 w-24 -right-5 -top-5 bg-yellow-500/60 rounded-full blur-2xl" />
 
@@ -92,7 +98,11 @@ export default function Lobby() {
               placeholder="Enter game code"
               className="w-full bg-[#1B1B1B] border border-gray-700 text-white"
             />
-            <Button onClick={() => handleJoinGame()} variant="outline" className="w-full cursor-pointer">
+            <Button
+              onClick={() => handleJoinGame()}
+              variant="outline"
+              className="w-full cursor-pointer"
+            >
               Join Game
             </Button>
           </div>
