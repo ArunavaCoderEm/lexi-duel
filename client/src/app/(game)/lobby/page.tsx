@@ -52,11 +52,11 @@ export default function Lobby() {
     }
   };
 
-  // useEffect(() => {
-  //   if (!isInDB) {
-  //     router.push("/"); 
-  //   }
-  // }, [isInDB, router]);
+  useEffect(() => {
+    if (!isInDB) {
+      router.push("/"); 
+    }
+  }, [isInDB, router]);
 
   return (
     <Dialog>
