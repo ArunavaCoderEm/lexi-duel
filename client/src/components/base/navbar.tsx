@@ -19,18 +19,18 @@ export default function Navbar(): React.ReactNode {
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest: number) => {
-    if (latest > 20) {
-      setScroll(true);
-    } else {
-      setScroll(false);
-    }
+    setScroll((prev) => {
+      const shouldBeScrolled = latest > 20;
+      return prev !== shouldBeScrolled ? shouldBeScrolled : prev;
+    });
   });
 
   const user = useUserStore();
 
   useLayoutEffect(() => {
     const checkUser = async () => {
-      if (cUser && !user.isInDB) {
+      if (!!cUser && !user.isInDB) {
+        console.log("hi");
         await userExists({
           email: cUser?.emailAddresses[0].emailAddress || "",
           firstName: cUser?.firstName || "",

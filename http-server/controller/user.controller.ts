@@ -80,7 +80,7 @@ export async function getUserHandler(c: Context) {
       );
     }
 
-    const user = prismaQuery.user.findUnique({
+    const user = await prismaQuery.user.findUnique({
       where: {
         email: parsed.data.email,
       },
@@ -93,7 +93,7 @@ export async function getUserHandler(c: Context) {
           success: false,
           error: { user: null },
         },
-        404
+        200
       );
     }
 
